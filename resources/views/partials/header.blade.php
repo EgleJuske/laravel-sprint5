@@ -8,8 +8,8 @@
         <div class="navbar-nav">
             <a class="nav-item nav-link {{ Request::routeIs('employees') ? 'active' : '' }}"
                 href="{{ route('employees') }}">Employees</a>
-            <a class="nav-item nav-link {{ Request::routeIs('projects') ? 'active' : '' }}"
-                href=" {{ route('projects') }}">Projects</a>
+            <a class="nav-item nav-link {{ Request::routeIs('projects.index') ? 'active' : '' }}"
+                href=" {{ route('projects.index') }}">Projects</a>
         </div>
     </div>
 </nav>

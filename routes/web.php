@@ -1,5 +1,7 @@
 <?php
 
+use App\Http\Controllers\ProjectController;
+use App\Models\Project;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -21,10 +23,15 @@ Route::get('/employees', function () {
     return view('employees');
 })->name('employees');
 
-Route::get('/projects', function () {
-    return view('projects');
-})->name('projects');
+Route::get('/projects', [ProjectController::class, 'index'])->name('projects.index');
+Route::get('/projects/{id}', [ProjectController::class, 'show'])->name('projects.show');
+Route::post('/projects', [ProjectController::class, 'store'])->name('projects.store');
+Route::delete('/projects/{id}', [ProjectController::class, 'destroy'])->name('projects.destroy');
+Route::put('/projects/{id}', [ProjectController::class, 'update'])->name('projects.update');
 
+
+
+// Error route
 Route::any('/{any}', function () {
     return view('errors/error-page');
 })->where('any', '.*');
