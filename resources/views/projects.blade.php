@@ -15,16 +15,24 @@
             @foreach ($projects as $project)
                 <tr>
                     <th scope="row">{{ $project['id'] }}</th>
-                    <td>{{ $project['project_name'] }}</td>
-                    <td>Name, name, name</td>
                     <td>
-                        <form action="{{ route('projects.show', $project['id']) }}" method="GET">
-                            <input class="btn btn-primary" type="submit" value="UPDATE">
-                        </form>
-                        <form action="{{ route('projects.destroy', $project['id']) }}" method="POST">
-                            @method('DELETE') @csrf
-                            <input class="btn btn-danger" type="submit" value="DELETE">
-                        </form>
+                        {{ $project['project_name'] }}
+                    </td>
+                    <td>
+                        @foreach ($project->employees as $employee)
+                            {{ $employee['employee_name'] }}{{ $loop->last ? '' : ', ' }}
+                        @endforeach
+                    </td>
+                    <td>
+                        <div class="d-flex">
+                            <form action="{{ route('projects.show', $project['id']) }}" method="GET">
+                                <input class="btn btn-primary btn-sm mr-3" type="submit" value="UPDATE">
+                            </form>
+                            <form action="{{ route('projects.destroy', $project['id']) }}" method="POST">
+                                @method('DELETE') @csrf
+                                <input class="btn btn-danger btn-sm" type="submit" value="DELETE">
+                            </form>
+                        </div>
                     </td>
                 </tr>
             @endforeach
@@ -40,16 +48,15 @@
     <form method="POST" action="/projects">
         @csrf
         <label for="project_name">Project name:</label><br>
-        <input type="text" id="project_name" name="project_name"><br>
+        <input type="text" id="project_name" name="project_name"><br><br>
         @error('project_name')
             <div class="alert alert-danger">{{ $message }}</div>
         @enderror
         <label for="project_info">Project info:</label><br>
-        <input type="text" id="project_info" name="project_info"><br>
+        <input type="text" id="project_info" name="project_info"><br><br>
         @error('project_info')
             <div class="alert alert-danger">{{ $message }}</div>
         @enderror
-        <br>
         <input class="btn btn-primary" type="submit" value="Submit">
     </form>
 

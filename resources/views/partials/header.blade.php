@@ -6,8 +6,8 @@
     </button>
     <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
         <div class="navbar-nav">
-            <a class="nav-item nav-link {{ Request::routeIs('employees') ? 'active' : '' }}"
-                href="{{ route('employees') }}">Employees</a>
+            <a class="nav-item nav-link {{ Request::routeIs('employees.index') ? 'active' : '' }}"
+                href="{{ route('employees.index') }}">Employees</a>
             <a class="nav-item nav-link {{ Request::routeIs('projects.index') ? 'active' : '' }}"
                 href=" {{ route('projects.index') }}">Projects</a>
         </div>
