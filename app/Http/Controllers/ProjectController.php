@@ -30,9 +30,6 @@ class ProjectController extends Controller
         $pr->project_name = $request['project_name'];
         $pr->project_info = $request['project_info'];
 
-        if ($pr->project_name == NULL or $pr->project_info == NULL)
-            return redirect('/projects')->with('status_error', 'Project was not created!');
-
         return ($pr->save() !== 1) ?
             redirect('/projects')->with('status_success', 'Project created!') :
             redirect('/projects')->with('status_error', 'Project was not created!');
@@ -53,10 +50,9 @@ class ProjectController extends Controller
             redirect('/projects/' . $id)->with('status_error', 'Project was not updated!');
     }
 
-
     public function destroy($id)
     {
         Project::destroy($id);
-        return redirect('/projects')->with('status_success', 'Post deleted!');
+        return redirect('/projects')->with('status_success', 'Project deleted!');
     }
 }

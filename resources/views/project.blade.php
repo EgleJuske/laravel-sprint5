@@ -5,6 +5,7 @@
     @else
         <p style="color: red"><b>{{ session('status_error') }}</b></p>
     @endif
+
     <form action="{{ route('projects.update', $project['id']) }}" method="POST">
         @method('PUT') @csrf
         <input type="text" name="project_name" value="{{ $project['project_name'] }}"><br>
