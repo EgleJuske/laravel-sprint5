@@ -9,9 +9,14 @@ This application is for educational purposes. This app is built with Laravel fra
 1. Clone this git repository or download and extract ZIP folder
 2. Move folder to this directory C:\Program Files\Ampps\www
 3. Start Apache and MySQL using Ampps
-4. Import 'sprint2db.sql' script to your local SQL Server
-5. Follow this link to open the project in your internet browser http://localhost/CRUD-sprint2-master/
-6. If your downloaded folder name is different, then your address in browser will be "localhost/your-folder-name"
+4. Create new Schema 'sprint5' in your database
+5. This app requires you to have **Composer** and **Doctrine** installed:
+    - Install [Composer](https://getcomposer.org/download/) (install it locally in `\www` directory)
+    - Go to the downloaded app folder and run this command in terminal `php ../composer.phar install`
+    - To install **Doctrine** run this command in terminal `php composer.phar require doctrine/orm`
+6. Run command in terminal `php artisan migrate` to create tables in database.
+7. Run command in terminal `php artisan db:seed` to add data to the tables.
+8. Run command in terminal `php artisan serve` and follow the link that is generated.
 
 ## Launch procedure:
 
