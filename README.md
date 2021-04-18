@@ -10,13 +10,25 @@ This application is for educational purposes. This app is built with Laravel fra
 2. Move folder to this directory C:\Program Files\Ampps\www
 3. Start Apache and MySQL using Ampps
 4. Create new Schema 'sprint5' in your database
-5. This app requires you to have **Composer** and **Doctrine** installed:
+5. Go to '.env.example' file and configure Database
+   DB_CONNECTION=mysql
+   DB_HOST=127.0.0.1
+   DB_PORT=3306
+   DB_DATABASE=sprint5
+   DB_USERNAME=root
+   DB_PASSWORD=mysql
+
+    Note: DB_DATABASE should be the same as schema's name that you created in 5th step
+
+6. Rename '.env.example' file to '.env'
+7. This app requires you to have **Composer** and **Doctrine** installed:
     - Install [Composer](https://getcomposer.org/download/) (install it locally in `\www` directory)
     - Go to the downloaded app folder and run this command in terminal `php ../composer.phar install`
     - To install **Doctrine** run this command in terminal `php composer.phar require doctrine/orm`
-6. Run command in terminal `php artisan migrate` to create tables in database.
-7. Run command in terminal `php artisan db:seed` to add data to the tables.
-8. Run command in terminal `php artisan serve` and follow the link that is generated.
+8. Run command in terminal `php artisan key:generate`
+9. Run command in terminal `php artisan migrate` to create tables in database
+10. Run command in terminal `php artisan db:seed` to add data to the tables
+11. Run command in terminal `php artisan serve` and follow the link that is generated
 
 ## Launch procedure:
 
