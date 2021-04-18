@@ -15,13 +15,24 @@ This application is for educational purposes. This app is built with Laravel fra
 
 ## Launch procedure:
 
-When you open this app in your browser you can:
+Once you apen the app in your browser, login will be required.
 
--   create new employees and projects;
--   read existing projects and employees;
--   update information about projects and employees;
--   delete projects (only if the project isn't asigned to any employee) and employees;
--   assing projects to employees.
+**Log in information:**  
+Username: admin
+Password: adminadmin
+
+Employees page:
+
+-   Add new employee
+-   Assign project to employee
+-   Delete employee
+-   Update employee name, surname, assigned project
+
+Projects page:
+
+-   Add new project
+-   Delete project (only if no employees are assigned to the project)
+-   Update project title and info
 
 ## Authors
 

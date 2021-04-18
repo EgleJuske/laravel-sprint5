@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\EmployeeController;
+use App\Http\Controllers\HomeController;
 use App\Http\Controllers\ProjectController;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
@@ -16,11 +17,7 @@ use Illuminate\Support\Facades\Auth;
 |
 */
 
-
-// Route::get('/', function () {
-//     return view('welcome');
-// })->name('index');
-Route::get('/', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+Route::get('/', [HomeController::class, 'index'])->name('home');
 
 Route::get('/projects', [ProjectController::class, 'index'])->name('projects.index');
 Route::get('/projects/{id}', [ProjectController::class, 'show'])->name('projects.show');
@@ -36,7 +33,7 @@ Route::put('/employees/{id}', [EmployeeController::class, 'update'])->name('empl
 
 Auth::routes();
 
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+Route::get('/home', [HomeController::class, 'index'])->name('home');
 
 // Error route
 Route::any('/{any}', function () {
