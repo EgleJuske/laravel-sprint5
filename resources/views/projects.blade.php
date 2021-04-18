@@ -46,25 +46,34 @@
     </table>
     @if (auth()->check())
         @if (session('status_success'))
-            <p style="color: green"><b>{{ session('status_success') }}</b></p>
-        @else
-            <p style="color: red"><b>{{ session('status_error') }}</b></p>
+            <div class="alert alert-success" role="alert">{{ session('status_success') }}</div>
+        @endif
+        @if (session('status_error'))
+            <div class="alert alert-danger" role="alert">{{ session('status_error') }}</div>
         @endif
 
-        <form method="POST" action="/projects">
-            @csrf
-            <label for="project_name">Project name:</label><br>
-            <input type="text" id="project_name" name="project_name"><br><br>
-            @error('project_name')
-                <div class="alert alert-danger">{{ $message }}</div>
-            @enderror
-            <label for="project_info">Project info:</label><br>
-            <input type="text" id="project_info" name="project_info"><br><br>
-            @error('project_info')
-                <div class="alert alert-danger">{{ $message }}</div>
-            @enderror
-            <input class="btn btn-primary" type="submit" value="Submit">
-        </form>
+        <div class="w-50 mt-5">
+            <h3>Add new project</h3>
+            <form method="POST" action="/projects">
+                @csrf
+                <div class="form-group">
+                    <label for="project_name">Project name:</label>
+                    <input class="form-control" type="text" id="project_name" name="project_name">
+                    @error('project_name')
+                        <div class="alert alert-danger" role="alert">{{ $message }}</div>
+                    @enderror
+                </div>
+                <div class="form-group">
+                    <label for="project_info">Project info:</label>
+                    <input class="form-control" type="text" id="project_info" name="project_info">
+                    @error('project_info')
+                        <div class="alert alert-danger" role="alert">{{ $message }}</div>
+                    @enderror
+                </div>
+                <input class="btn btn-primary text-uppercase mr-3" type="submit" value="Submit">
+                <input class="btn btn-secondary text-uppercase" type="reset" value="Reset form">
+            </form>
+        </div>
     @endif
 
 @endsection

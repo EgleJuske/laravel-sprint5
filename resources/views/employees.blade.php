@@ -45,35 +45,46 @@
     </table>
     @if (auth()->check())
         @if (session('status_success'))
-            <p style="color: green"><b>{{ session('status_success') }}</b></p>
-        @else
-            <p style="color: red"><b>{{ session('status_error') }}</b></p>
+            <div class="alert alert-success" role="alert">{{ session('status_success') }}</div>
+        @endif
+        @if (session('status_error'))
+            <div class="alert alert-danger" role="alert">{{ session('status_error') }}</div>
         @endif
 
-        <form method="POST" action="/employees">
-            @csrf
-            <label for="employee_name">Employee name:</label><br>
-            <input type="text" id="employee_name" name="employee_name"><br><br>
-            @error('employee_name')
-                <div class="alert alert-danger">{{ $message }}</div>
-            @enderror
-            <label for="employee_surname">Employee surname:</label><br>
-            <input type="text" id="employee_surname" name="employee_surname"><br><br>
-            @error('employee_surname')
-                <div class="alert alert-danger">{{ $message }}</div>
-            @enderror
-            <label for="project_id">Project:</label><br>
-            <select name="project_id" id="project_id">
-                <option value="" selected>--- None ---</option>
-                @foreach (App\Models\Project::all() as $project)
-                    <option value="{{ $project['id'] }}">{{ $project['project_name'] }}</option>
-                @endforeach
-            </select><br><br>
-            @error('project_id')
-                <div class="alert alert-danger">{{ $message }}</div>
-            @enderror
-            <input class="btn btn-primary" type="submit" value="Submit">
-        </form>
+        <div class="w-50 mt-5">
+            <h3>Add new employee</h3>
+            <form method="POST" action="/employees">
+                @csrf
+                <div class="form-group">
+                    <label for="employee_name">Employee name:</label>
+                    <input class="form-control" type="text" id="employee_name" name="employee_name">
+                    @error('employee_name')
+                        <div class="alert alert-danger">{{ $message }}</div>
+                    @enderror
+                </div>
+                <div class="form-group">
+                    <label for="employee_surname">Employee surname:</label>
+                    <input class="form-control" type="text" id="employee_surname" name="employee_surname">
+                    @error('employee_surname')
+                        <div class="alert alert-danger">{{ $message }}</div>
+                    @enderror
+                </div>
+                <div class="form-group">
+                    <label for="project_id">Project:</label>
+                    <select class="form-control" name="project_id" id="project_id">
+                        <option value="" selected>--- None ---</option>
+                        @foreach (App\Models\Project::all() as $project)
+                            <option value="{{ $project['id'] }}">{{ $project['project_name'] }}</option>
+                        @endforeach
+                    </select>
+                    @error('project_id')
+                        <div class="alert alert-danger">{{ $message }}</div>
+                    @enderror
+                </div>
+                <input class="btn btn-primary text-uppercase mr-3" type="submit" value="Submit">
+                <input class="btn btn-secondary text-uppercase" type="reset" value="Reset form">
+            </form>
+        </div>
     @endif
 
 @endsection
